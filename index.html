@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Countdown Timer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Countdown Timer</h1>
+
+    <div class="setup" id="setup">
+      <div class="input-group">
+        <input type="number" id="hours" placeholder="00" min="0" max="99" value="0" />
+        <span class="label">h</span>
+        <input type="number" id="minutes" placeholder="00" min="0" max="59" value="5" />
+        <span class="label">m</span>
+        <input type="number" id="seconds" placeholder="00" min="0" max="59" value="0" />
+        <span class="label">s</span>
+      </div>
+      <button class="btn btn-start" id="startBtn">Start</button>
+    </div>
+
+    <div class="display" id="display" style="display:none;">
+      <div class="time" id="timeDisplay">05:00</div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <div class="controls">
+        <button class="btn btn-pause" id="pauseBtn">Pause</button>
+        <button class="btn btn-reset" id="resetBtn">Reset</button>
+      </div>
+    </div>
+
+    <div class="finished" id="finished" style="display:none;">
+      <div class="finished-text">Time's up! 🎉</div>
+      <button class="btn btn-start" id="restartBtn">Set New Timer</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
