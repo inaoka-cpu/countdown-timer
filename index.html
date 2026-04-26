@@ -4,38 +4,84 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Countdown Timer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <h1>Countdown Timer</h1>
+  <div class="bg-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
 
+  <div class="card">
+    <h1>
+      <span class="title-icon">⏱</span>
+      Countdown Timer
+    </h1>
+
+    <!-- Setup screen -->
     <div class="setup" id="setup">
+      <p class="hint">Set your time</p>
       <div class="input-group">
-        <input type="number" id="hours" placeholder="00" min="0" max="99" value="0" />
-        <span class="label">h</span>
-        <input type="number" id="minutes" placeholder="00" min="0" max="59" value="5" />
-        <span class="label">m</span>
-        <input type="number" id="seconds" placeholder="00" min="0" max="59" value="0" />
-        <span class="label">s</span>
+        <div class="input-wrap">
+          <input type="number" id="hours" min="0" max="99" value="0" />
+          <span class="input-label">HRS</span>
+        </div>
+        <span class="colon">:</span>
+        <div class="input-wrap">
+          <input type="number" id="minutes" min="0" max="59" value="5" />
+          <span class="input-label">MIN</span>
+        </div>
+        <span class="colon">:</span>
+        <div class="input-wrap">
+          <input type="number" id="seconds" min="0" max="59" value="0" />
+          <span class="input-label">SEC</span>
+        </div>
       </div>
-      <button class="btn btn-start" id="startBtn">Start</button>
+      <button class="btn btn-start" id="startBtn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        Start Timer
+      </button>
     </div>
 
+    <!-- Timer display -->
     <div class="display" id="display" style="display:none;">
-      <div class="time" id="timeDisplay">05:00</div>
-      <div class="progress-bar">
-        <div class="progress-fill" id="progressFill"></div>
+      <div class="ring-wrap">
+        <svg class="ring" viewBox="0 0 200 200">
+          <circle class="ring-track" cx="100" cy="100" r="88"/>
+          <circle class="ring-fill" id="ringFill" cx="100" cy="100" r="88"/>
+        </svg>
+        <div class="time-inner">
+          <div class="time" id="timeDisplay">05:00</div>
+          <div class="time-sub" id="timeSub">remaining</div>
+        </div>
       </div>
       <div class="controls">
-        <button class="btn btn-pause" id="pauseBtn">Pause</button>
-        <button class="btn btn-reset" id="resetBtn">Reset</button>
+        <button class="btn btn-icon btn-reset" id="resetBtn" title="Reset">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/></svg>
+        </button>
+        <button class="btn btn-pause" id="pauseBtn">
+          <svg id="pauseIcon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+          <span id="pauseLabel">Pause</span>
+        </button>
+        <button class="btn btn-icon btn-ghost" id="resetBtnAlt" title="New timer" onclick="document.getElementById('resetBtn').click()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 11H7.83l4.88-4.88c.39-.39.39-1.03 0-1.42-.39-.39-1.02-.39-1.41 0l-6.59 6.59c-.39.39-.39 1.02 0 1.41l6.59 6.59c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L7.83 13H19c.55 0 1-.45 1-1s-.45-1-1-1z"/></svg>
+        </button>
       </div>
     </div>
 
+    <!-- Finished screen -->
     <div class="finished" id="finished" style="display:none;">
-      <div class="finished-text">Time's up! 🎉</div>
-      <button class="btn btn-start" id="restartBtn">Set New Timer</button>
+      <div class="finished-emoji">🎉</div>
+      <div class="finished-title">Time's up!</div>
+      <div class="finished-sub">Great work, you made it!</div>
+      <button class="btn btn-start" id="restartBtn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/></svg>
+        New Timer
+      </button>
     </div>
   </div>
 
